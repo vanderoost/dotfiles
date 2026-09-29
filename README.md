@@ -4,9 +4,13 @@ The stuff I keep in `$HOME/.config/`.
 
 ## Versions
 
-Neovim: `v0.10.0`
-Ghostty: `1.3.1`
-Tmux: `3.4`
+Last tested with:
+
+| Tool                                  | Version  |
+| ------------------------------------- | -------- |
+| [Neovim](https://neovim.io)           | `0.10.0` |
+| [Ghostty](https://ghostty.org)        | `1.3.1`  |
+| [tmux](https://github.com/tmux/tmux)  | `3.4`    |
 
 ## License
 
