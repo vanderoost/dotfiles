@@ -1,0 +1,19 @@
+# The configuration can be reloaded by pressing
+# [ctrl][shift][,] (Linux) or [cmd][shift][,] (MacOS)
+
+background = 0C0E14
+background-blur = 42
+background-opacity = 0.8
+font-size = 15
+font-thicken = true
+macos-titlebar-style = hidden
+mouse-hide-while-typing = false
+theme = tokyonight
+window-padding-balance = true
+window-step-resize = false
+
+# Fancy cursor warp stuff
+custom-shader = shaders/cursor_warp.glsl
+
+# For Claude code
+keybind = shift+enter=text:\x1b\r
