@@ -1,3 +1,3 @@
 # dotfiles
 
-TODO
+The stuff I keep in `$HOME/.config/`.
