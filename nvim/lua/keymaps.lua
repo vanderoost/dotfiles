@@ -28,6 +28,10 @@ vmap('K', ":m '<-2<CR>gv=gv")
 -- Change the text under the cursor and be able to repeat it on every occurrence
 nmap('c*', '*Ncgn')
 
+-- Up and down for scrolling
+nmap('<Up>', '<C-y>')
+nmap('<Down>', '<C-e>')
+
 nmap('<leader>e', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
 nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 

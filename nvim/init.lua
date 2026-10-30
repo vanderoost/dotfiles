@@ -1,3 +1,4 @@
-require 'user.keymaps'
-require 'user.options'
-require 'user.init-plugins'
+require 'keymaps'
+require 'settings'
+require 'plugins'
+require 'snippets'
