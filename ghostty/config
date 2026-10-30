@@ -8,7 +8,7 @@ font-size = 15
 font-thicken = true
 macos-titlebar-style = hidden
 mouse-hide-while-typing = false
-theme = light:Nvim Light,dark:Nvim Dark
+theme = light:TokyoNight Day,dark:TokyoNight Night
 window-padding-balance = true
 window-step-resize = false
 

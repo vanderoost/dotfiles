@@ -5,7 +5,16 @@ vim.pack.add {
   'https://github.com/stevearc/oil.nvim',
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/folke/tokyonight.nvim',
 }
+
+-- Colorscheme. `tokyonight` follows 'background': night when dark, day when light
+require('tokyonight').setup {
+  style = 'night',
+  transparent = true,
+  styles = { floats = 'transparent', sidebars = 'transparent' },
+}
+vim.cmd.colorscheme 'tokyonight'
 
 -- Minimal file explorer. See `:help oil`
 require('oil').setup()

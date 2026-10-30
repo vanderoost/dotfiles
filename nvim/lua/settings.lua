@@ -35,14 +35,12 @@ vim.o.winborder = 'rounded'
 
 -- [[ Autocommands ]]
 
--- Transparent backgrounds
+-- Transparent statusline
 local transparent_group = vim.api.nvim_create_augroup('user-transparent-bg',
   { clear = true })
 vim.api.nvim_create_autocmd('ColorScheme', {
   group = transparent_group,
   command = [[
-    highlight Normal guibg=NONE
-    highlight NormalFloat guibg=NONE
     highlight StatusLine guifg=fg guibg=NONE
     highlight! link StatusLineNC Comment
   ]],
@@ -52,9 +50,8 @@ vim.api.nvim_create_autocmd('OptionSet', {
   group = transparent_group,
   pattern = 'background',
   nested = true,
-  command = 'colorscheme default',
+  command = 'colorscheme tokyonight',
 })
-vim.cmd.colorscheme 'default'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
