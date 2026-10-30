@@ -1,6 +1,8 @@
 -- [[ Options ]]
 -- See `:help option-list`
 
+vim.opt.shortmess:append("I")
+
 vim.o.cmdheight = 0
 
 vim.o.clipboard = 'unnamedplus'
