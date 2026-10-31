@@ -35,4 +35,6 @@ nmap('<Down>', '<C-e>')
 nmap('<leader>e', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
 nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
+nmap('gm', '<cmd>make<CR>', 'Run the :make command')
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

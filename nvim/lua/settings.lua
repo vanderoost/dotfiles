@@ -61,6 +61,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- For C files, parse gcc/clang output into the quickfix list on :make
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('user-c-make', { clear = true }),
+  pattern = { 'c', 'cpp' },
+  callback = function()
+    vim.cmd 'compiler gcc'
+
+    -- Use make -B so it always rebuilds
+    vim.opt_local.makeprg = 'make -B'
+
+    -- Ignore non-diagnostic lines in quickfix
+    vim.opt_local.errorformat:append '%-G%.%#'
+  end,
+})
+
+-- Treat .h files as C instead of C++
+vim.g.c_syntax_for_h = 1
+
 -- [[ LSP ]]
 -- Each server is configured in `lsp/<name>.lua` and turned on here.
 -- The server binary itself must be on $PATH. See `:help lsp-quickstart`
@@ -102,6 +120,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if client:supports_method 'textDocument/completion' then
       vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
       vim.keymap.set('i', '<C-Space>', vim.lsp.completion.get, { buffer = event.buf })
+
+      -- Autotrigger only fires on the server's trigger characters (e.g. `.` or `->`),
+      -- so also open the menu once a typed name is x characters long
+      local group = vim.api.nvim_create_augroup('user-lsp-complete-word',
+        { clear = false })
+      vim.api.nvim_clear_autocmds { group = group, buffer = event.buf }
+      vim.api.nvim_create_autocmd('InsertCharPre', {
+        group = group,
+        buffer = event.buf,
+        callback = function()
+          if vim.fn.pumvisible() == 1 then
+            return
+          end
+          -- InsertCharPre runs before the typed character is in the line
+          local col = vim.api.nvim_win_get_cursor(0)[2]
+          local text = vim.api.nvim_get_current_line():sub(1, col) .. vim.v.char
+          local word = text:match '[%a_][%w_]*$'
+          if word and #word >= 4 then
+            vim.schedule(vim.lsp.completion.get)
+          end
+        end,
+      })
     end
 
     -- Format on save

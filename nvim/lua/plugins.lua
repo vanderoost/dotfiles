@@ -6,6 +6,7 @@ vim.pack.add {
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
   'https://github.com/folke/tokyonight.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
 }
 
 -- Colorscheme. `tokyonight` follows 'background': night when dark, day when light
@@ -19,6 +20,9 @@ vim.cmd.colorscheme 'tokyonight'
 -- Minimal file explorer. See `:help oil`
 require('oil').setup()
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
+
+-- Git added/changed/deleted lines in the sign column. See `:help gitsigns`
+require('gitsigns').setup()
 
 -- Telescope, see `:help telescope`
 require('telescope').setup()

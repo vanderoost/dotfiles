@@ -1,7 +1,7 @@
 # The configuration can be reloaded by pressing
 # [ctrl][shift][,] (Linux) or [cmd][shift][,] (MacOS)
 
-background-blur = 36
+background-blur = 32
 background-opacity = 0.75
 background-opacity-cells = true
 font-size = 15
