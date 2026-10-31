@@ -1,0 +1,13 @@
+# Open Apps
+# Run `skhd --restart-service` to refresh
+rcmd - b : open '/Applications/Brave Browser.app'
+rcmd - d : open "$HOME"
+rcmd - e : open /System/Applications/Mail.app
+rcmd - m : open /Applications/MindNode.app
+rcmd - n : open /System/Applications/Notes.app
+rcmd - p : osascript -e 'tell application "Spotify" to playpause'
+rcmd - r : open /System/Applications/Reminders.app
+rcmd - s : open /Applications/Spotify.app
+rcmd - t : open /Applications/Ghostty.app
+rcmd - w : open /Applications/Safari.app
+
