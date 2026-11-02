@@ -18,8 +18,13 @@ require('tokyonight').setup {
 vim.cmd.colorscheme 'tokyonight'
 
 -- Minimal file explorer. See `:help oil`
-require('oil').setup()
+require('oil').setup({
+  delete_to_trash = false,
+  skip_confirm_for_simple_edits = true,
+  constrain_cursor = "editable",
+})
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
+
 
 -- Git added/changed/deleted lines in the sign column. See `:help gitsigns`
 require('gitsigns').setup()
