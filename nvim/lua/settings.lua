@@ -53,6 +53,19 @@ vim.api.nvim_create_autocmd('OptionSet', {
   command = 'colorscheme tokyonight',
 })
 
+-- With cmdheight=0 there's no "recording @q" message, so show it in the statusline
+vim.o.statusline = "%{reg_recording() != '' ? 'recording @' .. reg_recording() .. ' ' : ''}"
+    .. vim.api.nvim_get_option_info2('statusline', {}).default
+vim.api.nvim_create_autocmd({ 'RecordingEnter', 'RecordingLeave' }, {
+  group = vim.api.nvim_create_augroup('user-recording-status', { clear = true }),
+  callback = function()
+    -- reg_recording() is still set during RecordingLeave, so redraw after it
+    vim.schedule(function()
+      vim.cmd.redrawstatus { bang = true }
+    end)
+  end,
+})
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('user-highlight-yank', { clear = true }),
