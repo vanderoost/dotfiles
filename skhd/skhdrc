@@ -9,5 +9,5 @@ rcmd - p : osascript -e 'tell application "Spotify" to playpause'
 rcmd - r : open /System/Applications/Reminders.app
 rcmd - s : open /Applications/Spotify.app
 rcmd - t : open /Applications/Ghostty.app
-rcmd - w : open /Applications/Safari.app
+rcmd - w : open /Applications/Firefox.app
 
