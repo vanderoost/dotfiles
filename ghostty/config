@@ -1,14 +1,18 @@
 # Reload with [ctrl][shift][,] (Linux) or [cmd][shift][,] (MacOS)
 
 # Original TokyoNight background: https://oklch.com/#0.2261,0.0211,279.34,100
+# sRGB
 # background = 1A1B26
+# P3
+# background = 1A1B25
 
 # Slightly darker background: https://oklch.com/#0.19,0.0211,279.34,100
-background = 12131d
+background = 12131c
 background-blur = 32
 background-opacity = 0.8
 background-opacity-cells = true
 theme = light:TokyoNight Day,dark:TokyoNight Night
+window-colorspace = display-p3
 
 font-thicken = true
 macos-titlebar-style = hidden
