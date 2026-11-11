@@ -81,8 +81,9 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.cmd 'compiler gcc'
 
-    -- Use make -B so it always rebuilds
-    vim.opt_local.makeprg = 'make -B'
+    -- Use make -B so it always rebuilds. :make pipes the output through `tee`, so
+    -- pipefail is needed for v:shell_error to hold make's exit code instead of tee's
+    vim.opt_local.makeprg = 'set -o pipefail; make -B'
 
     -- Ignore non-diagnostic lines in quickfix
     vim.opt_local.errorformat:append '%-G%.%#'

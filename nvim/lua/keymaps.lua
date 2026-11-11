@@ -35,6 +35,16 @@ nmap('<Down>', '<C-e>')
 nmap('<leader>e', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
 nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
-nmap('gm', '<cmd>make<CR>', 'Run the :make command')
+-- Run :make quietly, open the quickfix window on errors/warnings and report the result
+nmap('gm', function()
+  vim.cmd 'silent make'
+  vim.cmd 'cwindow'
+  if vim.v.shell_error == 0 then
+    vim.notify 'make: ok'
+  elseif vim.tbl_isempty(vim.fn.getqflist()) then
+    -- Failed without parsable errors (e.g. a linker error), so the quickfix is empty
+    vim.notify('make: failed (run :make to see the output)', vim.log.levels.ERROR)
+  end
+end, 'Run the :make command')
 
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
